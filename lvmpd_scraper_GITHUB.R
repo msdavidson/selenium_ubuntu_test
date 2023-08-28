@@ -30,7 +30,8 @@ library(mailR)
 
 remDr <- remoteDriver()
 
-remDr$open(silent = TRUE)
+#remDr$open(silent = TRUE)
+remDr$client
 
 #For Later: Create the CSV name based on run date/time
 ##Doing it up front, because it could take a while for webpage to load, scraper to run
