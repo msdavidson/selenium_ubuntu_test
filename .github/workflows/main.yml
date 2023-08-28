@@ -11,7 +11,7 @@ jobs:
     
     services:
       selenium:
-        image: selenium/standalone-chrome:103.0.5060.53
+        image: selenium/standalone-chrome:114.0.5735.90
         ports:
           - 4444:4444
           
