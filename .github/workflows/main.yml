@@ -24,6 +24,12 @@ jobs:
       with:
         use-public-rspm: true
         r-version: '4.0.4'
+
+    - name: Setup Java
+      uses: actions/setup-java@v2
+      with:
+        java-version: '15'
+        distribution: 'adopt'
         
     - name: Setup Pandoc
       uses: r-lib/actions/setup-pandoc@v2
