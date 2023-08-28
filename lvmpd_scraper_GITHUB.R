@@ -28,26 +28,6 @@ library(mailR)
 ####
 ####
 
-#To get RSelenium to workin GitHub, I had to get rid of LICENSE.chromedriver file in the Chrome version I was using
-selenium(retcommand = T) 
-
-#List all files and folders in this director
-list.files("C:/Users/runneradmin/AppData/Local/binman/binman_chromedriver/win32")
-
-list.files("C:/Users/runneradmin/AppData/Local/binman/binman_chromedriver/win32/113.0.5672.63")
-file.remove("C:/Users/runneradmin/AppData/Local/binman/binman_chromedriver/win32/113.0.5672.63/LICENSE.chromedriver")
-list.files("C:/Users/runneradmin/AppData/Local/binman/binman_chromedriver/win32/113.0.5672.63")
-
-
-list.files("C:/Users/runneradmin/AppData/Local/binman/binman_chromedriver/win32/114.0.5735.90")
-file.remove("C:/Users/runneradmin/AppData/Local/binman/binman_chromedriver/win32/114.0.5735.90/LICENSE.chromedriver")
-list.files("C:/Users/runneradmin/AppData/Local/binman/binman_chromedriver/win32/114.0.5735.90")
-
-####
-####
-####
-####
-
 #Start the server
 rs_driver_object <- rsDriver(browser = "chrome",
                              chromever = '114.0.5735.90',
