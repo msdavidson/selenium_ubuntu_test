@@ -27,31 +27,31 @@ jobs:
       with:
         use-public-rspm: true
         r-version: '4.0.4'
-    -  uses: r-lib/actions/setup-renv@v2
+    - uses: r-lib/actions/setup-renv@v2
 
     - name: Setup Pandoc
-        uses: r-lib/actions/setup-pandoc@v2
+      uses: r-lib/actions/setup-pandoc@v2
 
-      - name: Install packages
-        uses: r-lib/actions/setup-r-dependencies@v2
-        with:
-          packages: |
-            any::dplyr
-            any::tidyr
-            any::stringr
-            any::readr
-            any::lubridate
-            any::RSelenium
-            any::wdman
-            any::netstat
-            any::mailR
-            any::rmarkdown
-            any::markdown
-            any::knitr
-            any::googledrive
+    - name: Install packages
+      uses: r-lib/actions/setup-r-dependencies@v2
+      with:
+        packages: |
+          any::dplyr
+          any::tidyr
+          any::stringr
+          any::readr
+          any::lubridate
+          any::RSelenium
+          any::wdman
+          any::netstat
+          any::mailR
+          any::rmarkdown
+          any::markdown
+          any::knitr
+          any::googledrive
             
     - name: Run Scraper with Retry
-        uses: nick-fields/retry@v2
+      uses: nick-fields/retry@v2
       env:
         GMAIL_PASS: ${{ secrets.GMAIL_PASS }}
         GMAIL_USER: ${{ secrets.GMAIL_USER }}
@@ -66,10 +66,10 @@ jobs:
           command: Rscript lvmpd_scraper_GITHUB
       
     - name: Add and commit
-        run: |
-          git add .
-          git config user.name "Automated"
-          git config user.email "actions@users.noreply.github.com"
-          git commit -m "Latest data"
-      - name: Push
-        run: git push
+      run: |
+        git add .
+        git config user.name "Automated"
+        git config user.email "actions@users.noreply.github.com"
+        git commit -m "Latest data"
+    - name: Push
+      run: git push
