@@ -1,7 +1,10 @@
 #Libraries
 
 ##Basic data cleaning
-library(tidyverse)
+library(dplyr)
+library(tidyr)
+library(stringr)
+library(readr)
 library(lubridate)
 
 ##Needed to run RSelenium
