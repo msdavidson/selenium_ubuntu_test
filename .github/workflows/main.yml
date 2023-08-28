@@ -50,20 +50,26 @@ jobs:
             any::knitr
             any::googledrive
             
-    - name: Fetch latest data and send alerts
-      run: |-
-        Rscript scrape/scrape.R
+    - name: Run Scraper with Retry
+        uses: nick-fields/retry@v2
       env:
-        SLACK_WEBHOOK_URL: ${{secrets.SLACK_WEBHOOK_URL}}
-        NOTIFY_SLACK: TRUE
-    - name: Commit new files
-      run: |-
-        git config --local user.name actions-user
-        git config --local user.email "actions@github.com"
-        git add data/raw/*
-        timestamp=$(date -u)
-        git commit -m "Latest data: ${timestamp}" || exit 0
-        git push origin main
-      env:
-        REPO_KEY: ${{secrets.GITHUB_TOKEN}}
-        username: github-actions
+        GMAIL_PASS: ${{ secrets.GMAIL_PASS }}
+        GMAIL_USER: ${{ secrets.GMAIL_USER }}
+        GMAIL_SENDER: ${{ secrets.GMAIL_SENDER }}
+        GMAIL_RECIPIENT: ${{ secrets.GMAIL_RECIPIENT }}
+        DRIVE_JSON: ${{ secrets.DRIVE_JSON }}
+        DRIVE_FOLDER: ${{ secrets.DRIVE_FOLDER }}
+      with:
+          max_attempts: 1
+          retry_wait_seconds: 30
+          timeout_minutes: 30
+          command: Rscript lvmpd_scraper_GITHUB
+      
+    - name: Add and commit
+        run: |
+          git add .
+          git config user.name "Automated"
+          git config user.email "actions@users.noreply.github.com"
+          git commit -m "Latest data"
+      - name: Push
+        run: git push
