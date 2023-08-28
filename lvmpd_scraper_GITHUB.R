@@ -30,7 +30,6 @@ library(mailR)
 
 remDr <- remoteDriver()
 
-print_message('Opening RSelenium driver…')
 remDr$open(silent = TRUE)
 
 #For Later: Create the CSV name based on run date/time
