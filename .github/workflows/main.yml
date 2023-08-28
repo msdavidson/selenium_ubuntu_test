@@ -11,7 +11,7 @@ jobs:
     
     services:
       selenium:
-        image: selenium/standalone-firefox:2.53.1
+        image: selenium/standalone-chrome:103.0.5060.53
         ports:
           - 4444:4444
           
@@ -24,12 +24,6 @@ jobs:
       with:
         use-public-rspm: true
         r-version: '4.0.4'
-
-    - name: Setup Java
-      uses: actions/setup-java@v2
-      with:
-        java-version: '15'
-        distribution: 'adopt'
         
     - name: Setup Pandoc
       uses: r-lib/actions/setup-pandoc@v2
