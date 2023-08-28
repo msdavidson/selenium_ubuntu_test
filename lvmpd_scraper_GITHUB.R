@@ -30,6 +30,10 @@ library(mailR)
 
 selenium(retcommand=T)
 
+list.files("/home/runner/.local/share/binman_chromedriver/linux64/114.0.5735.90/")
+file.remove("/home/runner/.local/share/binman_chromedriver/linux64/114.0.5735.90/LICENSE.chromedriver")
+list.files("/home/runner/.local/share/binman_chromedriver/linux64/114.0.5735.90/")
+
 #Start the server
 rs_driver_object <- rsDriver(browser = "chrome",
                              chromever = '114.0.5735.90',
