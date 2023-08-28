@@ -28,12 +28,10 @@ library(mailR)
 ####
 ####
 
-#Start the server
-rs_driver_object <- rsDriver(browser = "firefox")
+remDr <- remoteDriver()
 
-#Create a client object
-remDr <- rs_driver_object$client
-
+print_message('Opening RSelenium driver…')
+remDr$open(silent = TRUE)
 
 #For Later: Create the CSV name based on run date/time
 ##Doing it up front, because it could take a while for webpage to load, scraper to run
