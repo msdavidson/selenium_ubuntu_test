@@ -68,11 +68,7 @@ lvmpd_pr_master <- NULL
 ##The first page actually has the value of "2". Second page is in "3" position
 ##Repeat "9" after a certain point, because the next page is always in the 9th position
 
-#This gets the first 10 pages of most recent records
-x <- c(3,4)
 
-for (i in x) {
-  
   #Pause the process for 5 seconds 
   Sys.sleep(5) 
 
@@ -108,14 +104,9 @@ for (i in x) {
   #Tidy up DataFrame
   request_time_df <- request_time_df %>% 
     select(request_time = 1)
-  
-}
 
 #Kill the current Selenium session
 remDr$closeWindow()
-
-rs_driver_object <- rs_driver_object$server$stop()
-
 
 ####
 ####
