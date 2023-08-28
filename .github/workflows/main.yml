@@ -1,9 +1,6 @@
 name: Scrape
 
 on:
-  push:
-    branches:
-      - main
   schedule:
     - cron:  '03 16,22 * * *' #UTC Time, represents around 9 am and 3 pm Pacific rn
   workflow_dispatch:
