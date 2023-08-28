@@ -28,6 +28,8 @@ library(mailR)
 ####
 ####
 
+selenium(retcommand=T)
+
 #Start the server
 rs_driver_object <- rsDriver(browser = "chrome",
                              chromever = '114.0.5735.90',
