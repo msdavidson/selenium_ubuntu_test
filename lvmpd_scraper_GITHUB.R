@@ -38,7 +38,7 @@ list.files("/home/runner/.local/share/binman_chromedriver/linux64/114.0.5735.90/
 rs_driver_object <- rsDriver(browser = "chrome",
                              chromever = '114.0.5735.90',
                              verbose = F,
-                             port = free_port())
+                             port=4444L)
 
 #Create a client object
 remDr <- rs_driver_object$client
