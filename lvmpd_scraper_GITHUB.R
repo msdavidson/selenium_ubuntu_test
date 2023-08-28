@@ -69,12 +69,12 @@ lvmpd_pr_master <- NULL
 ##Repeat "9" after a certain point, because the next page is always in the 9th position
 
 #This gets the first 10 pages of most recent records
-x <- c(3,4,5,6,7,8,9,9,9,9)
+x <- c(3,4)
 
 for (i in x) {
   
   #Pause the process for 5 seconds 
-  Sys.sleep(5) 
+  Sys.sleep(20) 
   
   ####################################
   #################################### 
