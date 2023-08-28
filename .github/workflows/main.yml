@@ -1,26 +1,55 @@
-name: scrape
+name: Scrape
 
 on:
   push:
     branches:
       - main
   schedule:
-    - cron:  '0 16 * * 3' # should be once a week, on Wednesdays, at 11am ET
+    - cron:  '03 16,22 * * *' #UTC Time, represents around 9 am and 3 pm Pacific rn
+  workflow_dispatch:
+
 jobs:
-  scrape:
+  auto-scrape:
     runs-on: ubuntu-20.04
+    
     services:
       selenium:
         image: selenium/standalone-firefox:2.53.1
         ports:
           - 4444:4444
+          
     steps:
-    - uses: actions/checkout@v3
-    - uses: r-lib/actions/setup-r@v2
+    - name: Check out repository
+      uses: actions/checkout@v3
+      
+    - name: Setup R  
+      uses: r-lib/actions/setup-r@v2
       with:
         use-public-rspm: true
         r-version: '4.0.4'
-    - uses: r-lib/actions/setup-renv@v2
+    -  uses: r-lib/actions/setup-renv@v2
+
+    - name: Setup Pandoc
+        uses: r-lib/actions/setup-pandoc@v2
+
+      - name: Install packages
+        uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          packages: |
+            any::dplyr
+            any::tidyr
+            any::stringr
+            any::readr
+            any::lubridate
+            any::RSelenium
+            any::wdman
+            any::netstat
+            any::mailR
+            any::rmarkdown
+            any::markdown
+            any::knitr
+            any::googledrive
+            
     - name: Fetch latest data and send alerts
       run: |-
         Rscript scrape/scrape.R
